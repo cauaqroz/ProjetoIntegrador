@@ -1,0 +1,41 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const Projeto = () => {
+  const [projetos, setProjetos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProjetos = async () => {
+      try {
+        const response = await axios.get('http://localhost:2216/projetos');
+        setProjetos(response.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjetos();
+  }, []);
+
+  if (loading) return <p>Carregando...</p>;
+  if (error) return <p>Erro ao carregar os projetos: {error.message}</p>;
+
+  return (
+    <div>
+      {projetos.map(projeto => (
+        <div key={projeto.id} style={{ border: '1px solid #ccc', padding: '16px', margin: '16px 0' }}>
+          <h1>{projeto.titulo}</h1>
+          <p><strong>Descrição:</strong> {projeto.descricao}</p>
+          <p><strong>Tecnologia:</strong> {projeto.tecnologia}</p>
+          {projeto.capaUrl && <img src={`http://localhost:2216/projetos/${projeto.id}/capa`} alt="Capa do Projeto" style={{ width: '100%', height: 'auto' }} />}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Projeto;
