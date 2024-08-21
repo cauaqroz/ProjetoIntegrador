@@ -1,0 +1,138 @@
+/* Estilos para o container principal */
+.detalhes-projeto .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinhar ao início */
+  padding: 20px;
+  margin-top: 60px; /* Ajuste para compensar o header fixo */
+}
+
+/* Estilos para os detalhes do projeto */
+.detalhes-projeto .project-details {
+  width: 900px; /* Ajustar a largura para ser igual ao project-card */
+  margin-top: 20px;
+  margin-left: 100px; /* Mover mais para a direita */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o card de imagem e título */
+.detalhes-projeto .project-card {
+  width: 900px; /* Aumentar a largura */
+  height: 300px; /* Diminuir a altura */
+  margin-top: 20px;
+  margin-left: 100px; /* Mover mais para a direita */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative; /* Necessário para o posicionamento absoluto do título */
+}
+
+.detalhes-projeto .project-card img {
+  width: 100%;
+  height: 100%; /* Ajustar a altura da imagem para preencher o card */
+  object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+  border-radius: 8px;
+ 
+}
+
+.detalhes-projeto .project-card h1 {
+  position: absolute;
+  bottom: 20px; /* Ajuste conforme necessário */
+  left: 20px; /* Ajuste conforme necessário */
+  margin: 0;
+  font-size: 28px;
+  color: #fff; /* Cor do texto para garantir visibilidade sobre a imagem */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente para melhor contraste */
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1; /* Garantir que o título fique sobre a imagem */
+  display: flex;
+  align-items: center; /* Alinhar o conteúdo verticalmente */
+}
+
+.detalhes-projeto .project-card .request-button {
+  position: absolute;
+  bottom: 20px; /* Alinhar na mesma linha do título */
+  right: 20px; /* Alinhar à direita */
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0056b3; /* Cor azul um pouco escura */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1; /* Garantir que o botão fique sobre a imagem */
+  height: 48px; /* Mesma altura do título */
+  display: flex;
+  align-items: center; /* Alinhar o conteúdo verticalmente */
+}
+
+.detalhes-projeto .project-card .request-button:hover {
+  background-color: #004494; /* Cor azul mais escura ao passar o mouse */
+}
+
+.detalhes-projeto .project-card .request-button:disabled {
+  background-color: #fff; /* Fundo branco */
+  color: #0056b3; /* Texto azul */
+  border: 2px solid #0056b3; /* Borda azul */
+  cursor: not-allowed;
+}
+
+.detalhes-projeto .project-details p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.detalhes-projeto .project-details strong {
+  font-weight: bold;
+  color: #333;
+}
+
+.detalhes-projeto .project-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.detalhes-projeto .project-details a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para o card de participantes */
+.detalhes-projeto .participantes-card {
+  width: 900px; /* Ajustar a largura para ser igual ao project-card */
+  margin-top: 20px;
+  margin-left: 100px; /* Mover mais para a direita */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.detalhes-projeto .participantes-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.detalhes-projeto .participante-item {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.detalhes-projeto .participante-card {
+  border: 1px solid #ccc;
+  padding: 8px; /* Diminua o padding conforme necessário */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Diminua a largura dos participantes */
+  margin: 0 auto; /* Centralize os participantes */
+}
+
+.detalhes-projeto .participante-card p {
+  margin: 5px 0; /* Diminua o espaçamento entre os parágrafos */
+}

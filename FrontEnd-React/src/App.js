@@ -5,7 +5,10 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Projeto from './components/Projeto';
-import Inicial from './pages/Inicial'; // Importe a nova página
+import Inicial from './pages/Inicial';
+import Perfil from './pages/Perfil';
+import DetalhesProjeto from './pages/DetalhesProjeto';
+import Projetos from './pages/Projetos';
 
 const App = () => {
   return (
@@ -15,7 +18,11 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/projeto/:projetoId" element={<Projeto />} />
-        <Route path="/inicial" element={<Inicial />} /> {/* Adicione a nova rota */}
+        <Route path="/inicial" element={<Inicial />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/detalhes-projeto/:id" element={<DetalhesProjeto />} />
+        
+        <Route path="/projetos" element={<Projetos />} />
       </Routes>
     </Router>
   );
