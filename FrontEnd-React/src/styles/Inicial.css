@@ -1,14 +1,13 @@
-/* Inicial.css */
 .container {
   display: flex;
   justify-content: center;
   padding: 20px;
-  margin-left: 250px; /* Ajuste conforme a largura da sua sidebar */
+  margin-left: 250px; 
 }
 
 .feed {
-  width: 600px; /* Ajuste o tamanho conforme necessário */
-  margin-left: 100px; /* Adicione uma margem esquerda para mover os cards para a direita */
+  width: 600px; 
+  margin-left: 100px; 
 }
 
 .card {
@@ -18,24 +17,24 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Ajuste a largura conforme necessário */
-  max-width: 550px; /* Diminua a largura máxima conforme necessário */
+  width: 100%; 
+  max-width: 550px;
 }
 
 .card img {
   width: 100%;
-  height: 200px; /* Defina a altura fixa para a imagem */
-  object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+  height: 200px; 
+  object-fit: cover; 
   border-radius: 8px;
 }
 
 .initial-payments-feed {
-  width: 300px; /* Defina a largura do payments-feed */
-  margin-left: 20px; /* Adicione uma margem esquerda para espaçamento */
-  margin-top: 60px; /* Alinhe com o perfil-feed */
-  position: absolute; /* Posicionamento absoluto */
-  top: 28px; /* Distância do topo */
-  right: 89px; /* Distância da direita */
+  width: 300px; 
+  margin-left: 20px; 
+  margin-top: 60px; 
+  position: absolute;
+  top: 28px;
+  right: 89px;
 }
 
 .initial-payments-card {
@@ -45,9 +44,9 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Ajuste a largura conforme necessário */
+  width: 100%;
   height: 220px;
-  max-width: 300px; /* Defina a largura máxima do payments-card */
+  max-width: 300px; 
 }
 
 .initial-anuncio-card {
@@ -57,10 +56,10 @@
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Ajuste a largura conforme necessário */
-  height: 450px; /* Defina a altura desejada */
-  max-width: 300px; /* Defina a largura máxima do anuncio-card */
-  position: absolute; /* Posicionamento absoluto */
-  top: 290px; /* Distância do topo para alinhar abaixo do payments-card */
-  right: -35px; /* Distância da direita */
+  width: 100%; 
+  height: 450px;
+  max-width: 300px; 
+  position: absolute;
+  top: 290px; 
+  right: -35px; 
 }

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import defaultImage from '../assets/baixados.png'; // Importe a imagem
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import defaultImage from "../assets/baixados.png";
 
 const Projeto = () => {
   const [projetos, setProjetos] = useState([]);
@@ -10,7 +10,7 @@ const Projeto = () => {
   useEffect(() => {
     const fetchProjetos = async () => {
       try {
-        const response = await axios.get('http://localhost:2216/projetos');
+        const response = await axios.get("http://localhost:2216/projetos");
         setProjetos(response.data);
       } catch (err) {
         setError(err);
@@ -27,16 +27,36 @@ const Projeto = () => {
 
   return (
     <div>
-      {projetos.map(projeto => (
-        <div key={projeto.id} style={{ border: '1px solid #ccc', padding: '16px', margin: '16px 0' }}>
-          <img 
-            src={projeto.capaUrl ? `http://localhost:2216/projetos/${projeto.id}/capa` : defaultImage} 
-            alt="Capa do Projeto" 
-            style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px' }} 
+      {projetos.map((projeto) => (
+        <div
+          key={projeto.id}
+          style={{
+            border: "1px solid #ccc",
+            padding: "16px",
+            margin: "16px 0",
+          }}
+        >
+          <img
+            src={
+              projeto.capaUrl
+                ? `http://localhost:2216/projetos/${projeto.id}/capa`
+                : defaultImage
+            }
+            alt="Capa do Projeto"
+            style={{
+              width: "100%",
+              height: "200px",
+              objectFit: "cover",
+              borderRadius: "8px",
+            }}
           />
           <h1>{projeto.titulo}</h1>
-          <p><strong>Descrição:</strong> {projeto.descricao}</p>
-          <p><strong>Tecnologia:</strong> {projeto.tecnologia}</p>
+          <p>
+            <strong>Descrição:</strong> {projeto.descricao}
+          </p>
+          <p>
+            <strong>Tecnologia:</strong> {projeto.tecnologia}
+          </p>
         </div>
       ))}
     </div>

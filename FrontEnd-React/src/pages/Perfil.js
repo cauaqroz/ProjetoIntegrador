@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import '../styles/Perfil.css'; // Importe o CSS
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
+import "../styles/Perfil.css";
 
 const Perfil = () => {
   const location = useLocation();
@@ -14,8 +14,8 @@ const Perfil = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const userData = JSON.parse(sessionStorage.getItem('user'));
-    const freelancerData = JSON.parse(sessionStorage.getItem('freelancer'));
+    const userData = JSON.parse(sessionStorage.getItem("user"));
+    const freelancerData = JSON.parse(sessionStorage.getItem("freelancer"));
     if (userData) {
       setUser(userData);
     }
@@ -26,7 +26,7 @@ const Perfil = () => {
 
   const handleLogout = () => {
     sessionStorage.clear();
-    navigate('/login');
+    navigate("/login");
   };
 
   const handleCalculate = () => {
@@ -40,25 +40,52 @@ const Perfil = () => {
   if (!user) return <p>Carregando...</p>;
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <Sidebar />
       <div className="perfil-container">
         <Header onLogout={handleLogout} />
         <div className="perfil-content">
           <div className="perfil-feed">
             <div className="perfil-card">
-              <h1>{user.name} {user.lastName}</h1>
+              <h1>
+                {user.name} {user.lastName}
+              </h1>
               {freelancer ? (
                 <>
-                  <p><strong>Área de Atuação:</strong> {freelancer.areaOfExpertise}</p>
-                  <p><strong>Descrição:</strong> {freelancer.description}</p>
-                  <p><strong>País:</strong> {user.country} <strong>- Estado:</strong> {user.state}</p>
-                  <p><strong>Portfólio:</strong> <a href={freelancer.portfolio} target="_blank" rel="noopener noreferrer">{freelancer.portfolio}</a>  <strong>- Email:</strong> <a href={`mailto:${user.email}`}>{user.email}</a></p>
+                  <p>
+                    <strong>Área de Atuação:</strong>{" "}
+                    {freelancer.areaOfExpertise}
+                  </p>
+                  <p>
+                    <strong>Descrição:</strong> {freelancer.description}
+                  </p>
+                  <p>
+                    <strong>País:</strong> {user.country}{" "}
+                    <strong>- Estado:</strong> {user.state}
+                  </p>
+                  <p>
+                    <strong>Portfólio:</strong>{" "}
+                    <a
+                      href={freelancer.portfolio}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {freelancer.portfolio}
+                    </a>{" "}
+                    <strong>- Email:</strong>{" "}
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
+                  </p>
                 </>
               ) : (
                 <>
-                  <p><strong>Email:</strong> <a href={`mailto:${user.email}`}>{user.email}</a></p>
-                  <p><strong>País:</strong> {user.country} <strong>- Estado:</strong> {user.state}</p>
+                  <p>
+                    <strong>Email:</strong>{" "}
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
+                  </p>
+                  <p>
+                    <strong>País:</strong> {user.country}{" "}
+                    <strong>- Estado:</strong> {user.state}
+                  </p>
                 </>
               )}
             </div>
@@ -69,11 +96,19 @@ const Perfil = () => {
                 <h2>Simular Valor do Freelancer</h2>
                 <div>
                   <label>Horas Trabalhadas:</label>
-                  <input type="number" value={hours} onChange={(e) => setHours(e.target.value)} />
+                  <input
+                    type="number"
+                    value={hours}
+                    onChange={(e) => setHours(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Taxa por Hora:</label>
-                  <input type="number" value={rate} onChange={(e) => setRate(e.target.value)} />
+                  <input
+                    type="number"
+                    value={rate}
+                    onChange={(e) => setRate(e.target.value)}
+                  />
                 </div>
                 <button onClick={handleCalculate}>Calcular</button>
                 <p>Total: {total}</p>
@@ -83,11 +118,19 @@ const Perfil = () => {
                 <h2>Calcular Custo do Projeto</h2>
                 <div>
                   <label>Horas Trabalhadas:</label>
-                  <input type="number" value={hours} onChange={(e) => setHours(e.target.value)} />
+                  <input
+                    type="number"
+                    value={hours}
+                    onChange={(e) => setHours(e.target.value)}
+                  />
                 </div>
                 <div>
                   <label>Taxa por Hora:</label>
-                  <input type="number" value={rate} onChange={(e) => setRate(e.target.value)} />
+                  <input
+                    type="number"
+                    value={rate}
+                    onChange={(e) => setRate(e.target.value)}
+                  />
                 </div>
                 <button onClick={handleCalculate}>Calcular</button>
                 <p>Total: {total}</p>
@@ -101,14 +144,25 @@ const Perfil = () => {
         </div>
         <div className="projetos-feed">
           <div className="projetos-card">
-            <h2>{freelancer ? 'Projetos Participando' : 'Projetos Criados'}</h2>
+            <h2>{freelancer ? "Projetos Participando" : "Projetos Criados"}</h2>
             <ul>
-              {(freelancer ? user.projetosParticipando : user.projetosCriados).map(projeto => (
-                <li key={projeto.id} className="projeto-item" onClick={() => handleProjetoClick(projeto.id)}>
+              {(freelancer
+                ? user.projetosParticipando
+                : user.projetosCriados
+              ).map((projeto) => (
+                <li
+                  key={projeto.id}
+                  className="projeto-item"
+                  onClick={() => handleProjetoClick(projeto.id)}
+                >
                   <div className="projeto-card">
-                    <p><strong>{projeto.titulo}</strong> </p>
+                    <p>
+                      <strong>{projeto.titulo}</strong>{" "}
+                    </p>
                     <p>{projeto.descricao}</p>
-                    <p><strong>Tecnologia:</strong> {projeto.tecnologia}</p>
+                    <p>
+                      <strong>Tecnologia:</strong> {projeto.tecnologia}
+                    </p>
                   </div>
                 </li>
               ))}
