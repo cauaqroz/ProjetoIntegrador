@@ -1,3 +1,4 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -8,6 +9,8 @@ import Inicial from './pages/Inicial';
 import Perfil from './pages/Perfil';
 import DetalhesProjeto from './pages/DetalhesProjeto';
 import Projetos from './pages/Projetos';
+import NewProject from './pages/NewProject';
+import Account from './pages/Account';
 
 const App = () => {
   return (
@@ -21,7 +24,10 @@ const App = () => {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/detalhes-projeto/:id" element={<DetalhesProjeto />} />
         
+        <Route path="/account" element={<Account />} />
+        
         <Route path="/projetos" element={<Projetos />} />
+        <Route path="/newproject" element={<NewProject />} />
       </Routes>
     </Router>
   );
