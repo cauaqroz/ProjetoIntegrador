@@ -138,14 +138,17 @@ const Projetos = () => {
       .catch(error => console.error('Erro ao negar solicitação:', error));
     }
   };
-  
+   
 
+  
   const handleUpdateProjeto = async (updatedProjeto) => {
     if (!selectedProjeto || !user) return;
   
+
     try {
       const response = await fetch(`http://localhost:2216/projetos/${selectedProjeto.id}`, {
         method: 'PATCH',
+
         headers: {
           'Content-Type': 'application/json',
           'ownerId': user.id
