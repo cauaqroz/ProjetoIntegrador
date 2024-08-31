@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
-import Loading from '../components/Loading';
+import Loading from '../components/Loading'; 
 import '../styles/NewProject.css'; 
 
 const NewProject = () => {
@@ -11,9 +11,9 @@ const NewProject = () => {
     title: '',
     description: '',
     technology: '',
-    image: null, 
+    image: null, // Adicione o campo de imagem
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // Estado para controlar a tela de carregamento
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -26,7 +26,7 @@ const NewProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); 
+    setLoading(true); // Mostrar tela de carregamento
 
     try {
       const user = JSON.parse(sessionStorage.getItem('user'));
@@ -36,6 +36,7 @@ const NewProject = () => {
         throw new Error('Usuário não está logado');
       }
 
+      // Lógica para enviar os dados do projeto para o backend
       const response = await fetch('http://localhost:2216/projetos', {
         method: 'POST',
         headers: {
@@ -62,10 +63,10 @@ const NewProject = () => {
         });
       }
 
-      setLoading(false);
-      navigate('/projetos');
+      setLoading(false); // Ocultar tela de carregamento
+      navigate('/projetos'); // Redireciona para a página de projetos após a criação
     } catch (error) {
-      setLoading(false);
+      setLoading(false); // Ocultar tela de carregamento em caso de erro
       console.error('Erro ao criar projeto:', error);
       alert('Erro ao criar projeto. Tente novamente.');
     }

@@ -1,0 +1,138 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    padding-top: 30px;
+    padding-left: 55px;
+    padding-right: 35px;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .header-buttons button {
+    margin-left: 10px;
+    padding: 6px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 45px;
+    width: 100px; /* Define uma largura fixa para os botões */
+  }
+  
+  .header-buttons button:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+  
+  .header-buttons button:last-of-type {
+    background-color: #000000;
+    color: white;
+    font-size: 0.8em;
+    border: 2px solid black;
+  }
+  
+  .header-buttons button:first-of-type {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    font-size: 0.8em;
+  }
+  
+  .login-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-login img {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  .form-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .form-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .form-box h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .field-error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  
+  .form-box form div {
+    margin-bottom: 25px;
+    position: relative;
+  }
+  
+  .form-box input {
+    width: 95%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #0000006e;
+    border-radius: 35px;
+  }
+  
+  .input-error {
+    border-color: red;
+  }
+  
+  .form-box button {
+    width: 50%; /* Diminui a largura do botão */
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    display: block; /* Garante que o botão seja um bloco */
+    margin: 0 auto; /* Centraliza o botão */
+  }
+  
+  .form-box button:hover {
+    background-color: #080024;
+  }

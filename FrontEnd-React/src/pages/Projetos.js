@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';  
-import defaultImage from '../assets/baixados.png';
+import Sidebar from '../components/Sidebar'; 
+import Header from '../components/Header';   
+import defaultImage from '../assets/baixados.png'; 
 import '../styles/Projetos.css'; 
 import { useState, useEffect, useRef } from 'react';
 const Projetos = () => {
@@ -13,10 +13,10 @@ const Projetos = () => {
   const [mensagens, setMensagens] = useState([]);
   const [novaMensagem, setNovaMensagem] = useState(''); 
   const [activeTab, setActiveTab] = useState('informacoes');
-  const [shouldScroll, setShouldScroll] = useState(true);
-  const [participantesAprovados, setParticipantesAprovados] = useState([]);
+  const [shouldScroll, setShouldScroll] = useState(true); 
+  const [participantesAprovados, setParticipantesAprovados] = useState([]); 
   const navigate = useNavigate();
-  const mensagensEndRef = useRef(null); 
+  const mensagensEndRef = useRef(null);
 
   useEffect(() => {
     const userData = JSON.parse(sessionStorage.getItem('user'));
@@ -91,7 +91,7 @@ const Projetos = () => {
 
   const handleProjetoClick = (projeto) => {
     setSelectedProjeto(projeto);
-    setShouldScroll(true); 
+    setShouldScroll(true);
   };
 
   const handleBackToMenu = () => {
@@ -138,20 +138,17 @@ const Projetos = () => {
       .catch(error => console.error('Erro ao negar solicitação:', error));
     }
   };
-   
-
   
+
   const handleUpdateProjeto = async (updatedProjeto) => {
     if (!selectedProjeto || !user) return;
   
-
     try {
       const response = await fetch(`http://localhost:2216/projetos/${selectedProjeto.id}`, {
         method: 'PATCH',
-
         headers: {
           'Content-Type': 'application/json',
-          'ownerId': user.id
+          'ownerId': user.id 
         },
         body: JSON.stringify(updatedProjeto)
       });
@@ -182,8 +179,9 @@ const Projetos = () => {
   
       if (response.ok) {
         console.log('Projeto deletado com sucesso');
+        // Atualizar a lista de projetos após a exclusão
         fetchProjetos(user.id);
-        setSelectedProjeto(null); 
+        setSelectedProjeto(null); // Voltar ao menu de projetos
       } else {
         console.error('Erro ao deletar projeto');
       }
@@ -214,10 +212,10 @@ const Projetos = () => {
   
       if (response.ok) {
         console.log('Mensagem enviada com sucesso');
-        setNovaMensagem(''); 
+        setNovaMensagem(''); // Limpar o campo de entrada
         fetch(`http://localhost:2216/chat/${selectedProjeto.chatId}/messages`)
           .then(response => response.json())
-          .then(data => setMensagens(data)); 
+          .then(data => setMensagens(data)); // Atualizar as mensagens
       } else {
         console.error('Erro ao enviar mensagem:', response.statusText);
       }
@@ -234,10 +232,10 @@ const Projetos = () => {
             <h2>{selectedProjeto.titulo}</h2>
             <p>{selectedProjeto.descricao}</p>
             <p><strong>Tecnologia:</strong> {selectedProjeto.tecnologia}</p>
-            
+            {/* Adicione mais detalhes do projeto conforme necessário */}
             <div className="arquivos">
               <h3>Arquivos</h3>
-              
+              {/* Conteúdo dos arquivos */}
             </div>
           </>
         );

@@ -36,7 +36,7 @@ const Account = () => {
         name: user.name,
         lastName: user.lastName,
         email: user.email,
-        password: '',
+        password: '', // Não preencher a senha por segurança
         country: user.country,
         state: user.state
       });
@@ -131,7 +131,7 @@ const Account = () => {
 
             if (freelancerResponse.status === 200) {
               alert('Perfil de freelancer cadastrado com sucesso!');
-              setHasFreelancerProfile(true);
+              setHasFreelancerProfile(true); // Atualiza o estado para indicar que o perfil foi criado
             } else {
               console.error('Erro ao cadastrar perfil de freelancer:', freelancerResponse.statusText);
             }

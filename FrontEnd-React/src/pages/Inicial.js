@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import defaultImage from "../assets/baixados.png"; //Endereço da Imagem padrao para projetos sem imagem
-import "../styles/Inicial.css";
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+import defaultImage from '../assets/baixados.png';
+import '../styles/Inicial.css'; 
 
 const Inicial = () => {
   const location = useLocation();
@@ -15,7 +15,7 @@ const Inicial = () => {
   const [projetos, setProjetos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [hours, setHours] = useState(0);
@@ -23,8 +23,8 @@ const Inicial = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const userData = JSON.parse(sessionStorage.getItem("user"));
-    const freelancerData = JSON.parse(sessionStorage.getItem("freelancer"));
+    const userData = JSON.parse(sessionStorage.getItem('user'));
+    const freelancerData = JSON.parse(sessionStorage.getItem('freelancer'));
     if (userData) {
       setUser(userData);
     }
@@ -36,7 +36,7 @@ const Inicial = () => {
   useEffect(() => {
     const fetchProjetos = async () => {
       try {
-        const response = await axios.get("http://localhost:2216/projetos");
+        const response = await axios.get('http://localhost:2216/projetos');
         setProjetos(response.data);
       } catch (err) {
         setError(err);
@@ -50,7 +50,7 @@ const Inicial = () => {
 
   const handleLogout = () => {
     sessionStorage.clear();
-    navigate("/login");
+    navigate('/login');
   };
 
   const handleSearchChange = async (event) => {
@@ -59,9 +59,7 @@ const Inicial = () => {
 
     if (isSearchActive && term) {
       try {
-        const response = await axios.get(
-          `http://localhost:2216/projetos/buscarProjetos?titulo=${term}`
-        );
+        const response = await axios.get(`http://localhost:2216/projetos/buscarProjetos?titulo=${term}`);
         setSearchResults(response.data);
       } catch (err) {
         setError(err);
@@ -90,37 +88,18 @@ const Inicial = () => {
   const projetosToDisplay = searchTerm ? searchResults : projetos;
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: 'flex' }}>
       <Sidebar />
       <div className="container">
         <div className="feed">
-          <Header
-            onLogout={handleLogout}
-            onSearchChange={handleSearchChange}
-            onSearchFocus={handleSearchFocus}
-          />
-          <div style={{ paddingTop: "60px" }}>
-            {projetosToDisplay.map((projeto) => (
-              <div
-                key={projeto.id}
-                className="card"
-                onClick={() => handleProjetoClick(projeto.id)}
-              >
-                <img
-                  src={
-                    projeto.capaUrl
-                      ? `http://localhost:2216/projetos/${projeto.id}/capa`
-                      : defaultImage
-                  }
-                  alt="Capa do Projeto"
-                />
+          <Header onLogout={handleLogout} onSearchChange={handleSearchChange} onSearchFocus={handleSearchFocus} />
+          <div style={{ paddingTop: '60px' }}>
+            {projetosToDisplay.map(projeto => (
+              <div key={projeto.id} className="card" onClick={() => handleProjetoClick(projeto.id)}>
+                <img src={projeto.capaUrl ? `http://localhost:2216/projetos/${projeto.id}/capa` : defaultImage} alt="Capa do Projeto" />
                 <h1>{projeto.titulo}</h1>
-                <p>
-                  <strong>Descrição:</strong> {projeto.descricao}
-                </p>
-                <p>
-                  <strong>Tecnologia:</strong> {projeto.tecnologia}
-                </p>
+                <p><strong>Descrição:</strong> {projeto.descricao}</p>
+                <p><strong>Tecnologia:</strong> {projeto.tecnologia}</p>
               </div>
             ))}
           </div>
@@ -131,19 +110,11 @@ const Inicial = () => {
               <h2>Simular Valor do Freelancer</h2>
               <div>
                 <label>Horas Trabalhadas:</label>
-                <input
-                  type="number"
-                  value={hours}
-                  onChange={(e) => setHours(e.target.value)}
-                />
+                <input type="number" value={hours} onChange={(e) => setHours(e.target.value)} />
               </div>
               <div>
                 <label>Taxa por Hora:</label>
-                <input
-                  type="number"
-                  value={rate}
-                  onChange={(e) => setRate(e.target.value)}
-                />
+                <input type="number" value={rate} onChange={(e) => setRate(e.target.value)} />
               </div>
               <button onClick={handleCalculate}>Calcular</button>
               <p>Total: {total}</p>
@@ -153,19 +124,11 @@ const Inicial = () => {
               <h2>Calcular Custo do Projeto</h2>
               <div>
                 <label>Horas Trabalhadas:</label>
-                <input
-                  type="number"
-                  value={hours}
-                  onChange={(e) => setHours(e.target.value)}
-                />
+                <input type="number" value={hours} onChange={(e) => setHours(e.target.value)} />
               </div>
               <div>
                 <label>Taxa por Hora:</label>
-                <input
-                  type="number"
-                  value={rate}
-                  onChange={(e) => setRate(e.target.value)}
-                />
+                <input type="number" value={rate} onChange={(e) => setRate(e.target.value)} />
               </div>
               <button onClick={handleCalculate}>Calcular</button>
               <p>Total: {total}</p>

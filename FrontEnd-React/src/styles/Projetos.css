@@ -1,176 +1,206 @@
 .projects-page {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .container-projects {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px;
-  margin-left: 200px;
-  position: relative;
-  flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    margin-left: 200px; 
+    position: relative; 
+    flex-grow: 1;
 }
 
 .projects-content {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  margin-left: 33px;
-  position: relative;
-  flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-left: 33px; 
+    position: relative; 
+    flex-grow: 1; 
 }
 
 .projects-feed {
-  width: 100%;
-  margin-left: 0px;
-  margin-bottom: 20px;
-  margin-top: 60px;
-  flex-grow: 1;
+    width: 100%; 
+    margin-left: 0px;
+    margin-bottom: 20px; 
+    margin-top: 60px;
+    flex-grow: 1;
 }
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+    width: 100%;
 }
 
 .projects-item {
-  cursor: pointer;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 .projects-item:hover {
-  background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .projects-detalhes {
-  width: 100%;
-  max-width: 750px;
-  border: 1px solid #ccc;
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 750px; 
+    border: 1px solid #ccc;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .projects-detalhes.full-screen {
-  max-width: 97.7%;
-  height: 635px;
+    max-width: 97.7%; 
+    height:635pxpx; 
 }
 
 .close-icon {
-  font-size: 39px;
-  color: #000;
-  position: absolute;
-  top: 88px;
-  right: 25px;
-  cursor: pointer;
+    font-size: 39px;
+    color: #000;
+    position: absolute;
+    top: 88px;
+    right: 25px;
+    cursor: pointer;
 }
 
 .tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .tabs button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #f0f0f0;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+    padding: 10px 20px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
 .tabs button.active {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 .tab-content {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
 }
 
 .canal-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .mensagens {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #ffffff;
-  max-height: 400px;
-  scrollbar-width: none;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    max-height: 400px; 
+    scrollbar-width: none;
 }
 
+
 .mensagens::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .mensagem {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  max-width: 35%;
-  word-wrap: break-word;
-  word-break: break-word;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-width: 35%; 
+    word-wrap: break-word; 
+    word-break: break-word; 
 }
 
 .mensagem p:first-child {
-  margin-bottom: 20px;
+    margin-bottom: 20px; 
 }
-
+ 
 .mensagem-direita {
-  margin-left: auto;
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  text-align: right;
+    margin-left: auto;
+    background-color: #ffffff;
+    border: 1px solid #000000; 
+    text-align: right; 
 }
 
 .mensagem-esquerda {
-  margin-right: auto;
-  background-color: #eeeeee;
-  border: 1px solid #000000;
-  text-align: left;
+    margin-right: auto; 
+    background-color: #eeeeee;
+    border: 1px solid #000000; 
+    text-align: left; 
 }
 
 .nova-mensagem {
-  display: flex;
-  margin-top: 10px;
+    display: flex;
+    margin-top: 10px;
 }
 
 .nova-mensagem input {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-right: 10px;
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
 }
 
 .nova-mensagem button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .nova-mensagem button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
+}
+
+/*pare aqui*/
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+.project-card {
+    width: 96%;
+    height: 300px;
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden; /* Adicione esta linha para evitar que a imagem vaze */
+    margin-bottom: 20px;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }

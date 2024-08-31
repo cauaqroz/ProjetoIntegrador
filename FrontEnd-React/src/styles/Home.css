@@ -1,0 +1,114 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    padding-top: 30px;
+    padding-left: 55px;
+    padding-right: 35px;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .header-buttons button {
+    margin-left: 10px;
+    padding: 6px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 45px;
+    width: 100px; /* Define uma largura fixa para os botões */
+  }
+  
+  .header-buttons button:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+  
+  .header-buttons button:last-of-type {
+    background-color: #000000;
+    color: white;
+    font-size: 0.8em;
+    border: 2px solid black;
+  }
+  
+  .header-buttons button:first-of-type {
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    font-size: 0.8em;
+  }
+  
+  .home-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .text-container {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-home img {
+    max-width: 85%;
+    height: auto;
+  }
+  
+  .main-title {
+    padding-left: 120px;
+    font-size: 3em;
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Altere a fonte conforme necessário */
+  }
+  
+  .main-subtitle {
+    padding-bottom: 20px;
+    padding-left: 120px;
+    font-size: 2em;
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Altere a fonte conforme necessário */
+  }
+  
+  .main-description {
+    padding-left: 120px;
+    font-size: 1.2em;
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Altere a fonte conforme necessário */
+    max-width: 700px; /* Limita a largura do parágrafo */
+    padding-bottom: 20px;
+  }
+  
+  .get-started-button {
+    display: block;
+    margin: 20px 0 0 120px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+  }
+  
+  .get-started-button:hover {
+    background-color: #080024;
+    border-radius: 45px;
+  }
