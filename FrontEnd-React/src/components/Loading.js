@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Loading.css';
+import '../styles/Loading.css'; // Importe o CSS para estilizar a tela de carregamento
 
 const Loading = () => {
   return (

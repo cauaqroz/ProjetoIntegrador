@@ -1,15 +1,16 @@
-
+/* Sidebar.css */
 .sidebar {
   width: 200px;
   height: 100vh;
-  background-color: #f4f4f4;
+  border-right: 1px solid black;
+  background-color: #e8e8e8;
   padding: 20px;
-  position: fixed; 
+  position: fixed; /* Torna a sidebar fixa */
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center; /* Centraliza os itens horizontalmente */
 }
 
 .sidebar h2 {
@@ -17,22 +18,23 @@
 }
 
 .menu-section, .social-section, .general-section {
-  width: 100%;
+  width: 100%; /* Garante que as seções ocupem toda a largura da sidebar */
   margin-bottom: 20px;
+  margin-top: 35px;
 }
 
 .menu-section h5, .social-section h5, .general-section h5 {
   margin-bottom: 10px;
-  font-size: 0.9em;
-  color: #5e5e5e;
-  text-align: center;
+  font-size: 1em;
+  color: #3c3c3c;
+  text-align: center; /* Centraliza o título da seção */
 }
 
 .sidebar ul {
   list-style-type: none;
   padding: 0;
-  width: 100%;
-  text-align: center; 
+  width: 100%; /* Garante que a lista ocupe toda a largura da sidebar */
+  text-align: center; /* Centraliza os itens da lista */
 }
 
 .sidebar ul li {
@@ -45,13 +47,13 @@
   color: #000000;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center; /* Centraliza o conteúdo do link */
   padding: 10px;
   border-radius: 4px;
 }
 
 .sidebar ul li a .icon {
-  margin-right: 8px; 
+  margin-right: 8px; /* Espaço entre o ícone e o texto */
 }
 
 .sidebar ul li a:hover {
@@ -59,15 +61,15 @@
 }
 
 .sidebar ul li.active a {
-  background-color: #fff;
-  width: calc(100% + 20px); 
-  color: #000;
+  background-color: #f8f7f2; /* Cor de fundo da aba ativa */
+  width: calc(100% + 20px); /* Aumenta a largura da aba ativa */
+  color: #000; /* Cor do texto da aba ativa */
   margin-right: -20px;
-
+  border-radius: 20px;
 }
 
 .sidebar .add-project {
-  margin-top: 30px; 
+  margin-top: 30px; /* Empurra o botão para o fim da sidebar */
   padding: 0px;
   cursor: pointer;
   display: flex;
@@ -75,9 +77,9 @@
   justify-content: center;
   border-radius: 4px;
   background-color: #f4f4f4;
-  width: 100%;
-  text-align: center; 
-  font-weight: bold;
+  width: 100%; /* Garante que o botão ocupe toda a largura da sidebar */
+  text-align: center; /* Centraliza o texto do botão */
+  font-weight: bold; /* Deixa o texto em negrito */
 }
 
 .sidebar .add-project:hover {
