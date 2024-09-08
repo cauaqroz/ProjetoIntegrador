@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
-import Loading from '../components/Loading'; 
-import '../styles/NewProject.css'; 
+import Loading from '../components/Loading'; // Importe o componente de tela de carregamento
+import '../styles/NewProject.css'; // Importe o CSS para estilizar a página
 
 const NewProject = () => {
   const navigate = useNavigate();

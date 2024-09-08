@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
-import loginImage from '../assets/LoginImg.jpeg'; 
+import loginImage from '../assets/LoginImg.jpg'; 
+import config from '../config/Config';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -40,7 +41,7 @@ const Login = () => {
     event.preventDefault();
     setError(''); // Limpa o erro antes de tentar logar
     try {
-      const response = await fetch('http://localhost:2216/users/login', {
+      const response = await fetch(`${config.LocalApi}/users/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ const Login = () => {
         sessionStorage.setItem('user', JSON.stringify(data)); 
 
         // Buscar perfil de freelancer
-        const freelancerResponse = await fetch(`http://localhost:2216/users/${data.id}/freelancer`);
+        const freelancerResponse = await fetch(`${config.LocalApi}/users/${data.id}/freelancer`);
         if (freelancerResponse.ok) {
           const freelancerData = await freelancerResponse.json();
           sessionStorage.setItem('freelancer', JSON.stringify(freelancerData)); 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
-import '../styles/Perfil.css';
+import '../styles/Perfil.css'; // Importe o CSS
 
 const Perfil = () => {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import defaultImage from '../assets/baixados.png'; 
+import defaultImage from '../assets/baixados.png'; // Importe a imagem
 
 const Projeto = () => {
   const [projetos, setProjetos] = useState([]);

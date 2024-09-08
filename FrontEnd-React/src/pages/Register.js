@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Register.css';
-import registerImage from '../assets/CadastroImg.jpeg';
-
+import '../styles/Register.css'; 
+import registerImage from '../assets/Research paper Customizable Flat Illustrations _ Rafiki Style.jpg'; 
+import config from '../config/Config';
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ const Register = () => {
       [name]: value
     });
 
- 
+    // Validação de campo
     let errorMessages = { ...errors };
     if (name === 'name' || name === 'lastName' || name === 'country' || name === 'state') {
       if (value.length < 3) {
@@ -44,9 +44,9 @@ const Register = () => {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-    setError(''); 
+    setError(''); // Limpa o erro antes de tentar registrar
     try {
-      const response = await fetch('http://localhost:2216/users', {
+      const response = await fetch(`${config.LocalApi}/users`, { //endereço da API
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const Register = () => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
-        navigate('/login'); 
+        navigate('/login'); // Redireciona para a página de login após o registro
       } else if (response.status === 400) {
         const data = await response.text();
         if (data.includes('Email já cadastrado.')) {

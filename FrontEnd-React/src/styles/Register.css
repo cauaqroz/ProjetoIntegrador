@@ -1,4 +1,5 @@
 .register-container {
+    background: white;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -25,7 +26,7 @@
     cursor: pointer;
     border: none;
     border-radius: 45px;
-    width: 100px; 
+    width: 100px; /* Define uma largura fixa para os botões */
   }
   
   .header-buttons button:hover {
@@ -63,7 +64,7 @@
   }
   
   .image-register img {
-    max-width: 70%;
+    max-width: 80%;
     height: auto;
     padding-left: 150px;
   }
@@ -127,7 +128,7 @@
   }
   
   .form-box button {
-    width: 50%; 
+    width: 50%; /* Diminui a largura do botão */
     padding: 10px 20px;
     font-size: 1em;
     color: white;
@@ -135,8 +136,8 @@
     border: none;
     border-radius: 35px;
     cursor: pointer;
-    display: block; 
-    margin: 0 auto; 
+    display: block; /* Garante que o botão seja um bloco */
+    margin: 0 auto; /* Centraliza o botão */
   }
   
   .form-box button:hover {

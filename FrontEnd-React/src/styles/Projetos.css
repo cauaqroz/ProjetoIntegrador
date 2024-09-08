@@ -5,52 +5,53 @@
 
 .container-projects {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Alinhar os feeds em coluna */
     align-items: center;
     padding: 20px;
-    margin-left: 200px; 
-    position: relative; 
-    flex-grow: 1;
+    margin-left: 200px; /* Ajuste conforme a largura da sua sidebar */
+    position: relative; /* Necessário para o posicionamento absoluto do payments-card */
+    flex-grow: 1; /* Permitir que o container ocupe o espaço restante */
 }
 
 .projects-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Alinhar os feeds em coluna */
     padding: 20px;
-    margin-left: 33px; 
-    position: relative; 
-    flex-grow: 1; 
+    margin-left: 33px; /* Ajuste conforme a largura da sua sidebar */
+    position: relative; /* Necessário para o posicionamento absoluto do payments-card */
+    flex-grow: 1; /* Permitir que o conteúdo ocupe o espaço restante */
 }
 
 .projects-feed {
-    width: 100%; 
+    width: 100%; /* Ajuste conforme necessário */
     margin-left: 0px;
-    margin-bottom: 20px; 
-    margin-top: 60px;
-    flex-grow: 1;
+    margin-bottom: 20px; /* Adicione uma margem inferior para separar os feeds */
+    margin-top: 60px; /* Adicione uma margem superior para descer o perfil-feed */
+    flex-grow: 1; /* Permitir que o feed ocupe o espaço restante */
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ajustar automaticamente o número de colunas */
     gap: 20px;
-    width: 100%;
+    width: 100%; /* Ocupa toda a largura disponível */
 }
 
 .projects-item {
     cursor: pointer;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 22px;
+    background: white;
     transition: background-color 0.3s;
 }
 .projects-item:hover {
-    background-color: #f0f0f0;
+    background-color: #e2e2e2c5;
 }
 
 .projects-detalhes {
     width: 100%;
-    max-width: 750px; 
+    max-width: 750px; /* Ajuste a largura máxima conforme necessário */
     border: 1px solid #ccc;
     padding: 16px;
     background-color: #fff;
@@ -59,8 +60,8 @@
 }
 
 .projects-detalhes.full-screen {
-    max-width: 97.7%; 
-    height:635pxpx; 
+    max-width: 97.7%; /* Remover a largura máxima */
+    height:635pxpx; /* Garantir que os detalhes do projeto ocupem toda a altura disponível */
 }
 
 .close-icon {
@@ -111,13 +112,13 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #ffffff;
-    max-height: 400px; 
+    max-height: 400px; /* Altura máxima para a área de mensagens */
     scrollbar-width: none;
 }
 
 
 .mensagens::-webkit-scrollbar {
-    display: none;
+    display: none; /* Ocultar barra de rolagem no Chrome, Safari e Opera */
 }
 
 .mensagem {
@@ -126,27 +127,27 @@
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    max-width: 35%; 
-    word-wrap: break-word; 
-    word-break: break-word; 
+    max-width: 35%; /* Limitar a largura máxima das mensagens */
+    word-wrap: break-word; /* Quebrar palavras longas */
+    word-break: break-word; /* Quebrar palavras longas */
 }
 
 .mensagem p:first-child {
-    margin-bottom: 20px; 
+    margin-bottom: 20px; /* Espaço entre o nome do usuário e a mensagem */
 }
  
 .mensagem-direita {
-    margin-left: auto;
+    margin-left: auto; /* Empurrar a mensagem para a borda direita */
     background-color: #ffffff;
-    border: 1px solid #000000; 
-    text-align: right; 
+    border: 1px solid #000000; /* Borda ciano para mensagens do usuário */
+    text-align: right; /* Alinhar o texto à direita */
 }
 
 .mensagem-esquerda {
-    margin-right: auto; 
+    margin-right: auto; /* Empurrar a mensagem para a borda esquerda */
     background-color: #eeeeee;
-    border: 1px solid #000000; 
-    text-align: left; 
+    border: 1px solid #000000; /* Borda cinza para mensagens de outros usuários */
+    text-align: left; /* Alinhar o texto à esquerda */
 }
 
 .nova-mensagem {
@@ -175,7 +176,6 @@
 .nova-mensagem button:hover {
     background-color: #0056b3;
 }
-
 /*pare aqui*/
 .project-image {
     width: 100%;

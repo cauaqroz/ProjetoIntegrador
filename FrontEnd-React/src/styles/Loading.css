@@ -4,11 +4,11 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    position: fixed;
+    position: fixed; /* Adicionado para garantir que o contêiner fique fixo na tela */
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8); 
+    background-color: rgba(255, 255, 255, 0.8); /* Adicionado para dar um fundo semi-transparente */
   }
   
   .loading-spinner {
