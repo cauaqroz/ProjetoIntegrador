@@ -4,8 +4,9 @@ import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import '../styles/Account.css';
+import config from '../config/Config';
 
-const Account = () => {
+const Account = ({ onUpdateAvatar }) => {
   const navigate = useNavigate();
   const [initialUserData, setInitialUserData] = useState({});
   const [userData, setUserData] = useState({
@@ -26,6 +27,7 @@ const Account = () => {
   const [isFreelancer, setIsFreelancer] = useState(false);
   const [userId, setUserId] = useState(null);
   const [hasFreelancerProfile, setHasFreelancerProfile] = useState(false);
+  const [profileImage, setProfileImage] = useState(null); // Novo estado para a imagem de perfil
 
   useEffect(() => {
     const user = JSON.parse(sessionStorage.getItem('user'));
@@ -76,6 +78,10 @@ const Account = () => {
     }));
   };
 
+  const handleImageChange = (event) => {
+    setProfileImage(event.target.files[0]);
+  };
+
   const getModifiedFields = (initialData, currentData) => {
     const modifiedFields = {};
     for (const key in currentData) {
@@ -91,7 +97,7 @@ const Account = () => {
     try {
       const modifiedUserData = getModifiedFields(initialUserData, userData);
       if (Object.keys(modifiedUserData).length > 0) {
-        const userResponse = await axios.patch('http://localhost:2216/users/update', modifiedUserData, {
+        const userResponse = await axios.patch(`${config.LocalApi}/users/update`, modifiedUserData, {
           headers: {
             'Content-Type': 'application/json',
             'userId': userId
@@ -109,7 +115,7 @@ const Account = () => {
         const modifiedFreelancerData = getModifiedFields(initialFreelancerData, freelancerData);
         if (Object.keys(modifiedFreelancerData).length > 0) {
           if (hasFreelancerProfile) {
-            const freelancerResponse = await axios.patch('http://localhost:2216/users/freelancer/update', modifiedFreelancerData, {
+            const freelancerResponse = await axios.patch(`${config.LocalApi}/users/freelancer/update`, modifiedFreelancerData, {
               headers: {
                 'Content-Type': 'application/json',
                 'userId': userId
@@ -122,7 +128,7 @@ const Account = () => {
               console.error('Erro ao atualizar perfil de freelancer:', freelancerResponse.statusText);
             }
           } else {
-            const freelancerResponse = await axios.post('http://localhost:2216/users/freelancer', freelancerData, {
+            const freelancerResponse = await axios.post(`${config.LocalApi}/users/freelancer`, freelancerData, {
               headers: {
                 'Content-Type': 'application/json',
                 'userId': userId
@@ -136,6 +142,33 @@ const Account = () => {
               console.error('Erro ao cadastrar perfil de freelancer:', freelancerResponse.statusText);
             }
           }
+        }
+      }
+
+      if (profileImage) {
+        const formData = new FormData();
+        formData.append('file', profileImage);
+
+        const imageResponse = await axios.post(`${config.LocalApi}/users/uploadAvatar`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'userId': userId
+          }
+        });
+
+        if (imageResponse.status === 200) {
+          alert('Imagem de perfil atualizada com sucesso!');
+          const newAvatarId = imageResponse.data.avatarId;
+          console.log('ID do novo avatar:', newAvatarId); // Exibe o ID do avatar no terminal
+
+          // Atualiza o campo avatar no sessionStorage
+          const user = JSON.parse(sessionStorage.getItem('user'));
+          user.avatar = newAvatarId;
+          sessionStorage.setItem('user', JSON.stringify(user));
+
+          onUpdateAvatar(newAvatarId); // Chama a função de atualização de imagem do Header
+        } else {
+          console.error('Erro ao atualizar imagem de perfil:', imageResponse.statusText);
         }
       }
     } catch (error) {
@@ -206,6 +239,10 @@ const Account = () => {
                 </div>
               </>
             )}
+            <div>
+              <label>Imagem de Perfil:</label>
+              <input type="file" name="profileImage" onChange={handleImageChange} />
+            </div>
             <button type="submit">Salvar</button>
           </form>
         </div>

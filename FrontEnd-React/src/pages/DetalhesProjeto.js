@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import defaultImage from '../assets/baixados.png';
-import Sidebar from '../components/Sidebar'; 
-import Header from '../components/Header'; 
-import '../styles/DetalhesProjeto.css'; 
+import defaultImage from '../assets/baixados.png'; // Importe a imagem
+import Sidebar from '../components/Sidebar'; // Importe a Sidebar
+import Header from '../components/Header'; // Importe o Header
+import '../styles/DetalhesProjeto.css'; // Importe o CSS
 
 const DetalhesProjeto = () => {
   const { id } = useParams();
