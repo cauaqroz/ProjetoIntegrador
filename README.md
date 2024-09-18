@@ -16,8 +16,6 @@ Este repositório contém o código fonte da nossa plataforma de freelancers, on
 - Banco de dados: [MongoDB]
 - Outras: [Metodo APIFIRST, SwaggerEditor, SOLID]
 
+## Documentação Backend
 
-Próximos Passos:
 
-- Pagamentos dentro da Plataforma
-- Melhorar o sistema de busca de projetos.
