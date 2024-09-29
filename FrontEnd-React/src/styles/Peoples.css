@@ -1,0 +1,66 @@
+.container {
+  flex: 1;
+  padding: 20px;
+}
+
+.friends-content {
+  margin-top: 20px;
+}
+
+.friends-list {
+  margin-top: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.friend-item {
+  display: flex;
+  justify-content: center;
+}
+
+.friend-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 900px;
+}
+
+.friend-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.friend-card-info {
+  flex: 1;
+}
+
+.friend-card-info h3 {
+  margin: 0 0 5px;
+}
+
+.friend-card-info p {
+  margin: 0;
+}
+
+.friend-card button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.friend-card button:hover {
+  background-color: #0056b3;
+}
