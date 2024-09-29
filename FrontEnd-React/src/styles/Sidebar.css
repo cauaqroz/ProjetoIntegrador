@@ -2,8 +2,8 @@
 .sidebar {
   width: 200px;
   height: 100vh;
-  border-right: 1px solid black;
-  background-color: #e8e8e8;
+  border-right: 2px solid #3f5cff;
+  background-color:hsl(0, 0%, 100%);
   padding: 20px;
   position: fixed; /* Torna a sidebar fixa */
   top: 0;
@@ -15,18 +15,19 @@
 
 .sidebar h2 {
   text-align: center;
+  color: #000000;
 }
 
 .menu-section, .social-section, .general-section {
   width: 100%; /* Garante que as seções ocupem toda a largura da sidebar */
-  margin-bottom: 20px;
-  margin-top: 35px;
+  margin-bottom: 0px;
+  margin-top: 8px;
 }
 
 .menu-section h5, .social-section h5, .general-section h5 {
   margin-bottom: 10px;
   font-size: 1em;
-  color: #3c3c3c;
+  color: #000000;
   text-align: center; /* Centraliza o título da seção */
 }
 
@@ -57,16 +58,36 @@
 }
 
 .sidebar ul li a:hover {
-  background-color: #ddd;
-}
-
-.sidebar ul li.active a {
-  background-color: #f8f7f2; /* Cor de fundo da aba ativa */
-  width: calc(100% + 20px); /* Aumenta a largura da aba ativa */
-  color: #000; /* Cor do texto da aba ativa */
-  margin-right: -20px;
+  background-color: #ffffff11;
   border-radius: 20px;
 }
+.sidebar ul li.active a {
+  background-color: #e7e7e7;
+  width: calc(100% );
+  color: #000;
+  margin-right: -20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 20px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: #3f5cff;
+  border-bottom-color: #3f5cff;
+  border-left-color: #3f5cff;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+
 
 .sidebar .add-project {
   margin-top: 30px; /* Empurra o botão para o fim da sidebar */

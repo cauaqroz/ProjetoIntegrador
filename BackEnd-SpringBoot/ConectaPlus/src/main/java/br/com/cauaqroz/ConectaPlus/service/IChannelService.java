@@ -16,4 +16,10 @@ public interface IChannelService {
     void removeUserFromChannel(String channelId, String userId);
 
     List<Channel> getChannelsByUserId(String userId);
+
+    List<Channel> getChannelsByUserIds(List<String> userIds);
+
+    List<Channel> getChannelsBetweenUsers(String userId1, String userId2);
+    
+
 }

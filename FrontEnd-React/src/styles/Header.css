@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color:  #e8e8e8;
+  background-color:  #ffffffe0;;
 
   position: fixed; /* Torna o header fixo */
   top: 7px;
@@ -12,7 +12,8 @@
   margin-left: 28px;
   margin-right: 40px;
   z-index: 1000; /* Garante que o header fique acima de outros elementos */
-  border-radius: 20px;
+  border-radius: 15px;
+  border-bottom: 2px solid #3f5cff;
 }
 
 .header-left {
@@ -39,7 +40,7 @@
   margin: 0 10px;
   margin-left: 20px;
   padding: 8px 0px 8px 46px;
-  border: 1px solid #000000;
+  border: 2px solid #000000;
   border-radius: 40px;
   position: relative;
   left: 58px;
@@ -87,6 +88,7 @@
     'wght' 300, /* Ajuste o peso da fonte para torná-la mais leve */
     'GRAD' 600,
     'opsz' 48;
+    color: #000000;
 }
 
 .notification-container {
@@ -149,17 +151,26 @@
 
 .new-project-button {
   margin-left: 20px; /* Adiciona margem à esquerda para espaçar o botão */
-  padding: 8px 16px;
-  background-color: #007bff;
+  padding: 7px 25px;
+  background-color: rgb(255, 102, 0);
   color: white;
   border: none;
-  border-radius: 24px;
+  border-radius: 9px;
   cursor: pointer;
   font-size: 14px;
   position: relative;
-  right: 50px;
+  right: 30px;
 }
 
 .new-project-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(255, 176, 17);
+}
+
+.search-icon.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300, /* Ajuste o peso da fonte para torná-la mais leve */
+    'GRAD' 600,
+    'opsz' 48;
+    color: #4d4d4d;
 }

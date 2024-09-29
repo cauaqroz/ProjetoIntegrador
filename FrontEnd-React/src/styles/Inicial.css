@@ -1,6 +1,6 @@
 /* Inicial.css */
 body{
-  background-color: #f8f7f2;
+  background-color: #e7e7e7;
 }
 
 .container {
@@ -53,6 +53,8 @@ body{
   width: 100%; /* Ajuste a largura conforme necessário */
   height: 220px;
   max-width: 300px; /* Defina a largura máxima do payments-card */
+  position: fixed;
+  z-index: 10;
 }
 
 .initial-anuncio-card {
@@ -62,12 +64,13 @@ body{
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Ajuste a largura conforme necessário */
-  height: 450px; /* Defina a altura desejada */
-  max-width: 300px; /* Defina a largura máxima do anuncio-card */
-  position: absolute; /* Posicionamento absoluto */
-  top: 290px; /* Distância do topo para alinhar abaixo do payments-card */
-  right: -35px; /* Distância da direita */
+  width: 100%;
+  height: 390px;
+  max-width: 299px;
+  /* position: absolute; */
+  top: 365px;
+  right: 56px;
+  position: fixed;
 }
 
 .load-more {
@@ -131,4 +134,29 @@ body{
 
 .modal-buttons button:last-child {
   background-color: #ccc;
+}
+
+
+/* Inicial.css */
+.floating-button {
+  position: fixed;
+  bottom: 25px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.floating-button:hover {
+  background-color: #ffb011;
 }

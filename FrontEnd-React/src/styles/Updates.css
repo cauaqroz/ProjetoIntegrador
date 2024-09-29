@@ -1,0 +1,36 @@
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.updates-content {
+  padding: 20px;
+  margin-top: 60px; /* Ajusta conforme necessário */
+  flex: 1;
+}
+
+.update-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.update-item h2 {
+  margin: 0 0 10px;
+}
+
+.update-item h3 {
+  margin: 0 0 10px;
+}
+
+.update-item p {
+  margin: 0 0 10px;
+}
+
+.update-item span {
+  font-size: 0.9em;
+  color: #666;
+}

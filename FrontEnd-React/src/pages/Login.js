@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
-import loginImage from '../assets/LoginImg.jpg'; 
+import loginImage from '../assets/Course app-pana.png'; 
 import config from '../config/Config';
+import { FaGoogle, FaFacebook } from 'react-icons/fa'; // Importar ícones
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -17,7 +18,6 @@ const Login = () => {
       [name]: value,
     }));
 
- 
     let errorMessages = { ...errors };
     if (name === 'email') {
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,7 +53,7 @@ const Login = () => {
         sessionStorage.setItem('user', JSON.stringify(data)); 
 
         // Buscar perfil de freelancer
-        const freelancerResponse = await fetch(`${config.LocalApi}/users/${data.id}/freelancer`);
+        const freelancerResponse = await fetch(`${config.LocalApi}/freelancers/${data.id}`);
         if (freelancerResponse.ok) {
           const freelancerData = await freelancerResponse.json();
           sessionStorage.setItem('freelancer', JSON.stringify(freelancerData)); 
@@ -70,14 +70,6 @@ const Login = () => {
     }
   };
 
-  const navigateToRegister = () => {
-    navigate('/register');
-  };
-
-  const navigateToLogin = () => {
-    navigate('/login');
-  };
-
   const navigateToHome = () => {
     navigate('/');
   };
@@ -86,15 +78,28 @@ const Login = () => {
     <div className="login-container">
       <div className="top-bar">
         <div className="logo" onClick={navigateToHome} style={{ cursor: 'pointer' }}>Conecta +</div>
-        <div className="header-buttons">
-          <button onClick={navigateToLogin}>Login</button>
-          <button onClick={navigateToRegister}>Cadastro</button>
-        </div>
+
       </div>
       <main className="login-main">
-        <div className="form-container">
-          <div className="form-box">
+        <div className="image-login">
+          <img src={loginImage} alt="Imagem de login" />
+        </div>
+        <div className="form-container login">
+          <div className="form-box login">
             <h1>Login</h1>
+            <ul className="social-login">
+              <li>
+                <button className="google-login">
+                  <FaGoogle /> Login com Google
+                </button>
+              </li>
+              <li>
+                <button className="facebook-login">
+                  <FaFacebook /> Login com Facebook
+                </button>
+              </li>
+            </ul>
+            <div className="divider">ou</div>
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleLogin}>
               <div>
@@ -121,12 +126,15 @@ const Login = () => {
                   className={errors.password ? 'input-error' : ''}
                 />
               </div>
-              <button type="submit">Login</button>
+              <div className="remember-forgot">
+                <label>
+                  <input type="checkbox" className='lembrar-usuario'/> Lembrar usuário
+                </label>
+                <a href="/forgot-password">Esqueceu a senha?</a>
+              </div>
+              <button type="submit" className='login-btn'>Login</button>
             </form>
           </div>
-        </div>
-        <div className="image-login">
-          <img src={loginImage} alt="Imagem de login" />
         </div>
       </main>
     </div>

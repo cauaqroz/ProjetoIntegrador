@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Register.css'; 
-import registerImage from '../assets/Research paper Customizable Flat Illustrations _ Rafiki Style.jpg'; 
+import registerImage from '../assets/Design tools-pana.png'; 
 import config from '../config/Config';
+import { FaGoogle, FaFacebook } from 'react-icons/fa'; // Importar ícones
+
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -25,7 +27,7 @@ const Register = () => {
 
     // Validação de campo
     let errorMessages = { ...errors };
-    if (name === 'name' || name === 'lastName' || name === 'country' || name === 'state') {
+    if (name === 'name' || name === 'lastName') {
       if (value.length < 3) {
         errorMessages[name] = 'Mínimo de 3 caracteres.';
       } else {
@@ -81,102 +83,124 @@ const Register = () => {
     navigate('/');
   };
 
-
   return (
     <div className="register-container">
       <div className="top-bar">
         <div className="logo" onClick={navigateToHome} style={{ cursor: 'pointer' }} >Conecta +</div>
-        <div className="header-buttons">
-          <button onClick={navigateToLogin}>Login</button>
-          <button onClick={navigateToRegister}>Cadastro</button>
-        </div>
+        
       </div>
       <main className="register-main">
         <div className="image-register">
           <img src={registerImage} alt="Imagem de cadastro" />
         </div>
-        <div className="form-container">
-          <div className="form-box">
+        <div className="form-container register">
+          <div className="form-box register">
             <h1>Cadastro</h1>
+            <ul className="social-register">
+              <li>
+                <button className="google-register">
+                  <FaGoogle /> Cadastro com Google
+                </button>
+              </li>
+              <li>
+                <button className="facebook-register">
+                  <FaFacebook /> Cadastro com Facebook
+                </button>
+              </li>
+            </ul>
+            <div className="divider">ou</div>
             {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleRegister}>
-              <div>
-                {errors.name && <p className="field-error">{errors.name}</p>}
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  minLength="3"
-                  placeholder="Nome"
-                  className={errors.name ? 'input-error' : ''}
-                />
-              </div>
-              <div>
-                {errors.lastName && <p className="field-error">{errors.lastName}</p>}
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  required
-                  minLength="3"
-                  placeholder="Sobrenome"
-                  className={errors.lastName ? 'input-error' : ''}
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Email"
-                />
-              </div>
-              <div>
-                {errors.password && <p className="field-error">{errors.password}</p>}
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                  minLength="6"
-                  placeholder="Senha"
-                  className={errors.password ? 'input-error' : ''}
-                />
-              </div>
-              <div>
-                {errors.country && <p className="field-error">{errors.country}</p>}
-                <input
-                  type="text"
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                  required
-                  minLength="3"
-                  placeholder="País"
-                  className={errors.country ? 'input-error' : ''}
-                />
-              </div>
-              <div>
-                {errors.state && <p className="field-error">{errors.state}</p>}
-                <input
-                  type="text"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  required
-                  minLength="3"
-                  placeholder="Estado"
-                  className={errors.state ? 'input-error' : ''}
-                />
-              </div>
-              <button type="submit">Registrar</button>
-            </form>
+  <div className="name-lastname">
+    <div className="form-group">
+      {errors.name && <p className="field-error">{errors.name}</p>}
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+        minLength="3"
+        placeholder="Nome"
+        className={errors.name ? 'input-error' : ''}
+      />
+    </div>
+    <div className="form-group">
+      {errors.lastName && <p className="field-error">{errors.lastName}</p>}
+      <input
+        type="text"
+        name="lastName"
+        value={formData.lastName}
+        onChange={handleChange}
+        required
+        minLength="3"
+        placeholder="Sobrenome"
+        className={errors.lastName ? 'input-error' : ''}
+      />
+    </div>
+  </div>
+  <div className="form-group">
+    <input
+      type="email"
+      name="email"
+      value={formData.email}
+      onChange={handleChange}
+      required
+      placeholder="Email"
+    />
+  </div>
+  <div className="form-group">
+    {errors.password && <p className="field-error">{errors.password}</p>}
+    <input
+      type="password"
+      name="password"
+      value={formData.password}
+      onChange={handleChange}
+      required
+      minLength="6"
+      placeholder="Senha"
+      className={errors.password ? 'input-error' : ''}
+    />
+  </div>
+  <div className="country-state">
+    <div className="form-group">
+      {errors.country && <p className="field-error">{errors.country}</p>}
+      <select
+        name="country"
+        value={formData.country}
+        onChange={handleChange}
+        required
+        className={errors.country ? 'input-error' : ''}
+      >
+        <option value="">País....</option>
+        <option value="Brasil">Brasil</option>
+        <option value="Estados Unidos">Estados Unidos</option>
+        <option value="Canadá">Canadá</option>
+        <option value="Outro">Outro..</option>
+      </select>
+    </div>
+    <div className="form-group">
+      {errors.state && <p className="field-error">{errors.state}</p>}
+      <select
+        name="state"
+        value={formData.state}
+        onChange={handleChange}
+        required
+        className={errors.state ? 'input-error' : ''}
+      >
+        <option value="">Estado...</option>
+        <option value="São Paulo">São Paulo</option>
+        <option value="Rio de Janeiro">Rio de Janeiro</option>
+        <option value="Minas Gerais">Minas Gerais</option>
+        <option value="Outro">Outro..</option>
+      </select>
+    </div>
+  </div>
+  <button type="submit" className='cadastro-btn'>Registrar</button>
+</form>
+            <div className="already-account">
+              Já possui uma conta? <a href="/login">Clique aqui</a>
+            </div>
           </div>
         </div>
       </main>

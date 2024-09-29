@@ -5,6 +5,7 @@ import defaultImage from '../assets/baixados.png'; // Importe a imagem
 import Sidebar from '../components/Sidebar'; // Importe a Sidebar
 import Header from '../components/Header'; // Importe o Header
 import '../styles/DetalhesProjeto.css'; // Importe o CSS
+import config from '../config/Config'; // Importe o arquivo de configuração
 
 const DetalhesProjeto = () => {
   const { id } = useParams();
@@ -25,12 +26,12 @@ const DetalhesProjeto = () => {
 
     const fetchProjeto = async () => {
       try {
-        const response = await axios.get(`http://localhost:2216/projetos/${id}`);
+        const response = await axios.get(`${config.LocalApi}/projetos/${id}`);
         setProjeto(response.data);
 
         if (response.data.approvedParticipants) {
           const participantesPromises = response.data.approvedParticipants.map(async (participanteId) => {
-            const participanteResponse = await axios.get(`http://localhost:2216/users/${participanteId}`);
+            const participanteResponse = await axios.get(`${config.LocalApi}/users/${participanteId}`);
             return participanteResponse.data;
           });
 
@@ -58,10 +59,14 @@ const DetalhesProjeto = () => {
     sessionStorage.clear();
     navigate('/login');
   };
+  const handleNewProjectClick = () => {
+    navigate('/newProject');
+  };
+
 
   const handleRequestParticipation = async () => {
     try {
-      const response = await axios.post(`http://localhost:2216/projetos/${id}/solicitarParticipacao`, {}, {
+      const response = await axios.post(`${config.LocalApi}/projetos/${id}/solicitarParticipacao`, {}, {
         headers: {
           'userId': userId
         }
@@ -87,7 +92,7 @@ const DetalhesProjeto = () => {
         <Header onLogout={handleLogout} />
         <div className="project-card">
           <img 
-            src={projeto.capaUrl ? `http://localhost:2216/projetos/${projeto.id}/capa` : defaultImage} 
+            src={projeto.capaUrl ? `${config.LocalApi}/projetos/${projeto.id}/capa` : defaultImage} 
             alt="Capa do Projeto" 
           />
           <h1>{projeto.titulo}</h1>
@@ -119,7 +124,9 @@ const DetalhesProjeto = () => {
           </div>
         )}
       </div>
+      <button className="floating-button" onClick={handleNewProjectClick}>+</button>
     </div>
+    
   );
 };
 

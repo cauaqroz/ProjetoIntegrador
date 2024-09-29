@@ -13,7 +13,9 @@ public class Message {
     private LocalDateTime createdDate;
     private String senderName;
 
-    // Getters and Setters
+
+
+    
     public String getChannelId() {
         return channelId;
     }
@@ -41,4 +43,5 @@ public class Message {
     public void setSenderName(String senderName) {
         this.senderName = senderName;
     }
+
 }

@@ -21,33 +21,7 @@
     font-weight: bold;
   }
   
-  .header-buttons button {
-    margin-left: 10px;
-    padding: 6px 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 45px;
-    width: 100px; /* Define uma largura fixa para os botões */
-  }
-  
-  .header-buttons button:hover {
-    background-color: #0056b3;
-    color: white;
-  }
-  
-  .header-buttons button:last-of-type {
-    background-color: #000000;
-    color: white;
-    font-size: 0.8em;
-    border: 2px solid black;
-  }
-  
-  .header-buttons button:first-of-type {
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    font-size: 0.8em;
-  }
+
   
   .home-main {
     display: flex;
@@ -55,6 +29,7 @@
     align-items: center;
     flex-grow: 1;
     padding: 20px;
+    
   }
   
   .text-container {
@@ -70,15 +45,18 @@
   }
   
   .image-home img {
-    max-width: 85%;
+    max-width: 90%;
     height: auto;
+    margin-left: 50px;
   }
   
   .main-title {
-    padding-left: 120px;
-    font-size: 3em;
+    padding-left: 113px;
+    font-size: 4em;
     margin: 0;
-    font-family: 'Arial', sans-serif; /* Altere a fonte conforme necessário */
+
+    color: #ff7b00;
+    
   }
   
   .main-subtitle {
@@ -86,7 +64,7 @@
     padding-left: 120px;
     font-size: 2em;
     margin: 0;
-    font-family: 'Arial', sans-serif; /* Altere a fonte conforme necessário */
+   
   }
   
   .main-description {
@@ -96,6 +74,7 @@
     font-family: 'Arial', sans-serif; /* Altere a fonte conforme necessário */
     max-width: 700px; /* Limita a largura do parágrafo */
     padding-bottom: 20px;
+    width: 515px;
   }
   
   .get-started-button {
@@ -104,13 +83,26 @@
     padding: 15px 30px;
     font-size: 1.2em;
     color: white;
-    background-color: black;
+    background-color: #152ba8;
     border: none;
     border-radius: 45px;
     cursor: pointer;
   }
   
   .get-started-button:hover {
-    background-color: #080024;
+    background-color: #001c77;
     border-radius: 45px;
   }
+
+/* index.css ou App.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* Fonte principal para o corpo do texto e elementos informativos */
+body, .main-description, .header-buttons button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Fonte secundária para títulos, subtítulos e botões */
+h1, h2, .main-title, .main-subtitle, .get-started-button, .header-buttons button {
+  font-family: 'Roboto', sans-serif;
+}

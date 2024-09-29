@@ -2,6 +2,7 @@ package br.com.cauaqroz.ConectaPlus.Controller;
 
 import br.com.cauaqroz.ConectaPlus.model.User;
 import br.com.cauaqroz.ConectaPlus.model.Freelancer;
+import br.com.cauaqroz.ConectaPlus.model.Friendship;
 import br.com.cauaqroz.ConectaPlus.model.Projeto;
 import br.com.cauaqroz.ConectaPlus.service.IUserService;
 import br.com.cauaqroz.ConectaPlus.service.IFreelancerService;
@@ -52,10 +53,17 @@ public class UserController {
         if (!userOpt.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-
+    
         User user = userOpt.get();
         Optional<Freelancer> freelancerOpt = freelancerService.getFreelancerById(user.getId());
-
+    
+        List<Projeto> projetosCriados = projetoRepository.findByCriador_Id(user.getId());
+    
+        List<Projeto> projetosParticipando = projetoRepository.findAll().stream()
+                .filter(projeto -> projeto.getApprovedParticipants().contains(user.getId()))
+                .collect(Collectors.toList());
+    
+            
         Map<String, Object> result = new HashMap<>();
         result.put("id", user.getId());
         result.put("registrationDate", user.getRegistrationDate());
@@ -64,16 +72,18 @@ public class UserController {
         result.put("email", user.getEmail());
         result.put("country", user.getCountry());
         result.put("state", user.getState());
-
+        result.put("avatar", user.getAvatar());
+        result.put("friends", user.getFriends());
+        result.put("projetosCriados", projetosCriados);
+        result.put("projetosParticipando", projetosParticipando);
+    
         freelancerOpt.ifPresent(freelancer -> {
             result.put("description", freelancer.getDescription());
             result.put("portfolio", freelancer.getPortfolio());
             result.put("education", freelancer.getEducation());
             result.put("areaOfExpertise", freelancer.getAreaOfExpertise());
-            result.put("completedJobs", freelancer.getCompletedJobs());
-            result.put("onTimeDeliveries", freelancer.getOnTimeDeliveries());
         });
-
+    
         return ResponseEntity.ok(result);
     }
 
@@ -204,10 +214,24 @@ public class UserController {
             response.put("projetosParticipando", projetosParticipando);
             response.put("token", token);
             response.put("avatar", user.getAvatar());
+            response.put("friends", user.getFriends());
 
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping
+public ResponseEntity<List<User>> getAllUsers() {
+    List<User> users = userService.findAll();
+    return ResponseEntity.ok(users);
+}
+
+@GetMapping("/search")
+public ResponseEntity<List<User>> searchUsersByName(@RequestParam String name) {
+    List<User> users = userService.searchUsersByName(name);
+    return ResponseEntity.ok(users);
+}
+
 }

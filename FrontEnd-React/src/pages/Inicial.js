@@ -95,7 +95,9 @@ const Inicial = () => {
   const handleLoadMore = () => {
     setVisibleProjects((prevVisibleProjects) => prevVisibleProjects + 8);
   };
-
+  const handleNewProjectClick = () => {
+    navigate('/newProject');
+  };
   const projetosToDisplay = searchTerm ? searchResults : projetos;
 
   return (
@@ -167,6 +169,7 @@ const Inicial = () => {
       {showLogoutModal && (
         <LogoutModal onConfirm={handleConfirmLogout} onCancel={handleCancelLogout} />
       )}
+      <button className="floating-button" onClick={handleNewProjectClick}>+</button>
     </div>
   );
 };

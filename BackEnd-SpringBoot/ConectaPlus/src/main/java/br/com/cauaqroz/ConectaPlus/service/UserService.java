@@ -1,7 +1,9 @@
 package br.com.cauaqroz.ConectaPlus.service;
 
 import br.com.cauaqroz.ConectaPlus.model.Channel;
+import br.com.cauaqroz.ConectaPlus.model.Friendship;
 import br.com.cauaqroz.ConectaPlus.model.User;
+import br.com.cauaqroz.ConectaPlus.repository.FriendshipRepository;
 import br.com.cauaqroz.ConectaPlus.repository.UserRepository;
 import br.com.cauaqroz.ConectaPlus.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,55 +118,76 @@ private ChannelService channelService;
 
 
     @Override
-public void addFriend(String userId, String friendId) {
-    User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
-    User friend = userRepository.findById(friendId).orElseThrow(() -> new RuntimeException("Amigo não encontrado."));
-
-    if (user.getFriends() == null) {
-        user.setFriends(new ArrayList<>());
-    }
-    if (friend.getFriends() == null) {
-        friend.setFriends(new ArrayList<>());
-    }
-
-    if (!user.getFriends().contains(friendId)) {
+    public void addFriend(String userId, String friendId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        User friend = userRepository.findById(friendId).orElseThrow(() -> new RuntimeException("Amigo não encontrado."));
+    
+        if (user.getFriends() == null) {
+            user.setFriends(new ArrayList<>());
+        }
+        if (friend.getFriends() == null) {
+            friend.setFriends(new ArrayList<>());
+        }
+    
         user.getFriends().add(friendId);
-    }
-    if (!friend.getFriends().contains(userId)) {
         friend.getFriends().add(userId);
-    }
-
-    // Criar um canal de chat entre os usuários
-    Channel channel = channelService.createChannel(userId);
-    channelService.addUserToChannel(channel.getId(), friendId);
-
-    userRepository.save(user);
-    userRepository.save(friend);
-}
-
-
-@Override
-public void removeFriend(String userId, String friendId) {
-    User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
-    User friend = userRepository.findById(friendId).orElseThrow(() -> new RuntimeException("Amigo não encontrado."));
-
-    if (user.getFriends() != null && user.getFriends().contains(friendId)) {
-        user.getFriends().remove(friendId);
-    }
-    if (friend.getFriends() != null && friend.getFriends().contains(userId)) {
-        friend.getFriends().remove(userId);
-    }
-
-    // Remover ambos os usuários da lista de usuários autorizados no canal
-    List<Channel> channels = channelService.findAll();
-    for (Channel channel : channels) {
-        if (channel.getAllowedUserIds().contains(userId) && channel.getAllowedUserIds().contains(friendId)) {
-            channelService.removeUserFromChannel(channel.getId(), userId);
-            channelService.removeUserFromChannel(channel.getId(), friendId);
+    
+        userRepository.save(user);
+        userRepository.save(friend);
+    
+        // Verificar se já existe um canal entre os dois usuários
+        List<Channel> existingChannels = channelService.getChannelsBetweenUsers(userId, friendId);
+        boolean friendChannelExists = existingChannels.stream().anyMatch(channel -> "friend".equals(channel.getType()));
+    
+        if (!friendChannelExists) {
+            Channel newChannel = new Channel();
+            newChannel.setMasterUserId(userId);
+            newChannel.setAllowedUserIds(Arrays.asList(userId, friendId));
+            newChannel.setType("friend"); // Definir o tipo como "friend"
+            channelService.save(newChannel);
         }
     }
 
-    userRepository.save(user);
-    userRepository.save(friend);
+
+    @Override
+    public void removeFriend(String userId, String friendId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        User friend = userRepository.findById(friendId).orElseThrow(() -> new RuntimeException("Amigo não encontrado."));
+
+        if (user.getFriends() != null) {
+            user.getFriends().remove(friendId);
+        }
+        if (friend.getFriends() != null) {
+            friend.getFriends().remove(userId);
+        }
+
+        userRepository.save(user);
+        userRepository.save(friend);
+    }
+
+@Override
+public List<User> findAll() {
+    return userRepository.findAll();
+}
+
+@Override
+public List<User> searchUsersByName(String name) {
+    return userRepository.findByNameContainingIgnoreCase(name);
+}
+@Autowired
+private FriendshipRepository friendshipRepository;
+
+public List<Friendship> getFriendships(String userId) {
+    User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+    List<String> friendIds = user.getFriends();
+    List<Friendship> friendships = new ArrayList<>();
+    for (String friendId : friendIds) {
+        // Supondo que você tenha um repositório de amizades
+        Friendship friendship = friendshipRepository.findByUserIdAndFriendId(userId, friendId);
+        if (friendship != null) {
+            friendships.add(friendship);
+        }
+    }
+    return friendships;
 }
 }

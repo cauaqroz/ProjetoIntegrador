@@ -5,10 +5,11 @@ import java.util.List;
 
 public class Channel {
     private String id;
-    private String masterUserId;
+    private List<String> masterUserIds;
     private List<String> allowedUserIds;
     private List<String> accessRequests;
     private List<Message> messages;
+    private String type;
 
     public Channel() {
         this.allowedUserIds = new ArrayList<>();
@@ -29,12 +30,17 @@ public class Channel {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
-    public String getMasterUserId() {
-        return masterUserId;
+
+    public List<String> getMasterUserId() {
+        return masterUserIds;
     }
+
     public void setMasterUserId(String masterUserId) {
-        this.masterUserId = masterUserId;
+        this.masterUserIds = new ArrayList<>();
+        this.masterUserIds.add(masterUserId);
     }
+
+
     public List<String> getAllowedUserIds() {
         return allowedUserIds;
     }
@@ -46,5 +52,12 @@ public class Channel {
     }
     public void setAccessRequests(List<String> accessRequests) {
         this.accessRequests = accessRequests;
+    }
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

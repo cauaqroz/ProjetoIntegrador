@@ -2,12 +2,20 @@ package br.com.fatec.ConectaPlus;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
-class ConectaPlusApplicationTests {
+import br.com.cauaqroz.ConectaPlus.ConectaPlusApplication;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
-	@Test
-	void contextLoads() {
-	}
+@SpringBootTest(classes = ConectaPlusApplication.class)
+public class ConectaPlusApplicationTests {
 
+    @Autowired
+    private ApplicationContext context;
+
+    @Test
+    void contextLoads() {
+        assertNotNull(context, "O contexto da aplicação não deve ser nulo");
+    }
 }

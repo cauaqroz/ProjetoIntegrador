@@ -168,6 +168,10 @@ const Projetos = () => {
       console.error('Erro ao atualizar projeto:', error);
     }
   };
+  const handleNewProjectClick = () => {
+    navigate('/newProject');
+  };
+
 
   const handleDeleteProjeto = async () => {
     if (!selectedProjeto || !user) return;
@@ -333,6 +337,7 @@ const Projetos = () => {
   };
 
   return (
+    
     <div className="projects-page">
       <Sidebar activeTab="/projetos" />
       <div className="container-projects">
@@ -414,8 +419,11 @@ const Projetos = () => {
           )}
         </div>
       </div>
+      <button className="floating-button" onClick={handleNewProjectClick}>+</button>
     </div>
+    
   );
+  
 };
 
 export default Projetos;

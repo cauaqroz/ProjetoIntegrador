@@ -16,11 +16,10 @@ public class ChannelService implements IChannelService {
     public ChannelService(ChannelRepository channelRepository) {
         this.channelRepository = channelRepository;
     }
-
     @Override
     public Channel createChannel(String masterUserId) {
         Channel newChannel = new Channel();
-        newChannel.setMasterUserId(masterUserId);
+        newChannel.setMasterUserId(masterUserId); // Chama o novo método
         newChannel.setAllowedUserIds(new ArrayList<>(Collections.singletonList(masterUserId)));
         channelRepository.save(newChannel);
         return newChannel;
@@ -88,4 +87,30 @@ public List<Channel> getChannelsByUserId(String userId) {
     }
     return userChannels;
 }
+
+
+public List<Channel> getChannelsByUserIds(List<String> userIds) {
+    List<Channel> allChannels = channelRepository.findAll();
+    List<Channel> commonChannels = new ArrayList<>();
+    for (Channel channel : allChannels) {
+        if (channel.getAllowedUserIds().containsAll(userIds)) {
+            commonChannels.add(channel);
+        }
+    }
+    return commonChannels;
+}
+
+
+@Override
+public List<Channel> getChannelsBetweenUsers(String userId1, String userId2) {
+    List<Channel> allChannels = channelRepository.findAll();
+    List<Channel> commonChannels = new ArrayList<>();
+    for (Channel channel : allChannels) {
+        if ("friend".equals(channel.getType()) && channel.getAllowedUserIds().contains(userId1) && channel.getAllowedUserIds().contains(userId2)) {
+            commonChannels.add(channel);
+        }
+    }
+    return commonChannels;
+}
+
 }

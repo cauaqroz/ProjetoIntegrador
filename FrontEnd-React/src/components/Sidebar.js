@@ -30,8 +30,11 @@ const Sidebar = ({ activeTab }) => {
       <div className="social-section">
         <h5>Social</h5>
         <ul>
-          <li className={currentTab === '/peoples' ? 'active' : ''}>
-            <Link to="/peoples" onClick={() => setCurrentTab('/peoples')}>Peoples</Link>
+          <li className={currentTab === '/friends' ? 'active' : ''}>
+            <Link to="/friends" onClick={() => setCurrentTab('/friends')}>Friends</Link>
+          </li>
+          <li className={currentTab === '/channel' ? 'active' : ''}>
+            <Link to="/channel" onClick={() => setCurrentTab('/channel')}>Channel</Link>
           </li>
         </ul>
       </div>

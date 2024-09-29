@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import br.com.cauaqroz.ConectaPlus.model.Channel;
 import br.com.cauaqroz.ConectaPlus.service.IChannelService;
+import br.com.cauaqroz.ConectaPlus.service.IMessageService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,5 +135,11 @@ public class ChannelController {
         List<Channel> channels = channelService.getChannelsByUserId(userId);
         return ResponseEntity.ok(channels);
     }
+    @GetMapping("/channels/between/{userId1}/{userId2}")
+    public ResponseEntity<List<Channel>> getChannelsBetweenUsers(@PathVariable String userId1, @PathVariable String userId2) {
+        List<Channel> channels = channelService.getChannelsBetweenUsers(userId1, userId2);
+        return ResponseEntity.ok(channels);
+    }
 
+    
 }

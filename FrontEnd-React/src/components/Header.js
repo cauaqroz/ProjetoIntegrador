@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom'; // Substituir useHistory por useNavigate
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import config from '../config/Config';
 import '../styles/Header.css';
 
 const Header = ({ onLogout, onSearchChange, onSearchFocus, selectedProjeto, openChannelId }) => {
   const location = useLocation();
-  const navigate = useNavigate(); // Substituir useHistory por useNavigate
+  const navigate = useNavigate(); 
   const [userAvatar, setUserAvatar] = useState(null);
   const [notifications, setNotifications] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -48,7 +48,11 @@ const Header = ({ onLogout, onSearchChange, onSearchFocus, selectedProjeto, open
         const previousNotifications = JSON.parse(sessionStorage.getItem('NoNotify')) || [];
 
         const newNotifications = data.filter(notification => 
-          !previousNotifications.some(prev => prev.createdDate === notification.createdDate)
+          !previousNotifications.some(prev => 
+            prev.content === notification.content &&
+            prev.sender === notification.sender &&
+            prev.channelId === notification.channelId
+          )
         );
 
         if (newNotifications.length > 0) {
@@ -64,9 +68,18 @@ const Header = ({ onLogout, onSearchChange, onSearchFocus, selectedProjeto, open
             return notification;
           }));
 
+          // Notificar novas notificações
+          notificationsWithProjectTitles.forEach(notification => {
+            // Lógica de notificação (ex: exibir um alerta, enviar uma mensagem, etc.)
+            console.log('Nova notificação:', notification);
+          });
+
+          // Atualiza o estado das notificações
           setNotifications(prevNotifications => [...notificationsWithProjectTitles, ...prevNotifications]);
 
-          sessionStorage.setItem('NoNotify', JSON.stringify(data));
+          // Atualiza o sessionStorage com todas as notificações (novas e antigas)
+          const updatedNotifications = [...previousNotifications, ...newNotifications];
+          sessionStorage.setItem('NoNotify', JSON.stringify(updatedNotifications));
         }
       } else {
         console.error('Erro ao buscar notificações:', response.statusText);
@@ -90,9 +103,6 @@ const Header = ({ onLogout, onSearchChange, onSearchFocus, selectedProjeto, open
     !(selectedProjeto && notification.channelId === selectedProjeto.chatId)
   );
 
-  const handleNewProjectClick = () => {
-    navigate('/newProject'); // Substituir history.push por navigate
-  };
 
   return (
     <div className="header">
@@ -108,12 +118,9 @@ const Header = ({ onLogout, onSearchChange, onSearchFocus, selectedProjeto, open
           />
         </div>
       </div>
-      <button onClick={handleNewProjectClick} className="new-project-button">
-        Novo
-      </button>
       <div className="header-right">
         <div className="notification-container">
-          <button className="notification-button" onClick={toggleDropdown}>
+          <button className="notification-button" title='Notificação' onClick={toggleDropdown}>
             <span className="material-symbols-outlined">notifications</span>
             {filteredNotifications.length > 0 && <span className="notification-dot"></span>}
           </button>
@@ -130,7 +137,7 @@ const Header = ({ onLogout, onSearchChange, onSearchFocus, selectedProjeto, open
             </div>
           )}
         </div>
-        <div className="profile-circle">
+        <div className="profile-circle" title='Perfil'>
           {userAvatar ? (
             <Link to="/perfil">
               <img src={userAvatar} alt="Avatar" className="profile-image" />
@@ -139,7 +146,7 @@ const Header = ({ onLogout, onSearchChange, onSearchFocus, selectedProjeto, open
             <span className="material-symbols-outlined">account_circle</span>
           )}
         </div>
-        <button onClick={onLogout} className="logout-button">
+        <button onClick={onLogout} className="logout-button" title='Sair'>
           <span className="material-symbols-outlined">logout</span>
         </button>
       </div>
