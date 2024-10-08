@@ -3,7 +3,27 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw; /* Adicione esta linha para garantir que a largura seja 100% */
+  position: relative;
+  overflow: hidden;
 }
+
+.wave-top, .wave-bottom {
+  position: absolute;
+  width: 100%;
+  z-index: 0; /* Certifique-se de que o z-index seja menor que o do conteúdo principal */
+}
+
+.wave-top {
+  top: 0;
+  height: 150px; /* Altura original */
+}
+
+.wave-bottom {
+  bottom: 0;
+  height: 100px;
+}
+
 .name-lastname{
   width: 97% !important;
   right: 7px !important;
@@ -23,17 +43,14 @@
   font-weight: bold;
 }
 
-
-
-
-
-
 .register-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
   padding: 15px;
+  position: relative;
+  z-index: 1; /* Certifique-se de que o z-index seja maior que o das faixas de onda */
 }
 
 .image-register {
@@ -64,7 +81,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #ffffff5e;
 }
 
 .form-box h1 {
@@ -92,7 +109,7 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .social-register button svg {
@@ -100,16 +117,26 @@
 }
 
 .google-register {
-  background-color: #ff7b00;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 1px solid black !important;
+  border-radius: 15px !important;
 }
 .google-register:hover {
-  background-color: #ffa72d !important;
-  color: white;
+  background-color: #ffffff !important;
+  color: rgb(0, 0, 0);
+  border: 1px solid black !important;
+  border-radius: 15px !important;
 }
 .facebook-register {
-  background-color: #002bb9;
+  background-color: #3a5897;
   color: white;
+  border-radius: 15px !important;
+}
+.facebook-register:hover {
+  background-color:#3a5897 !important;
+  color: white;
+  border-radius: 15px !important;
 }
 
 .divider {
@@ -220,3 +247,9 @@
   text-decoration: underline;
 }
 
+.social-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 53px;
+  margin-left: 20px;
+}
