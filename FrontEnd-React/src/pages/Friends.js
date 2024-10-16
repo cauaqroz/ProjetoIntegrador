@@ -19,7 +19,7 @@ const Friends = () => {
         const response = await axios.get(`${config.LocalApi}/users`);
         if (response.status === 200) {
           const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
-          const filteredUsers = response.data.filter(user => user.id !== loggedInUser.id);
+          const filteredUsers = response.data.filter(user => user.id !== loggedInUser.id && !loggedInUser.friends.includes(user.id));
           setUsers(filteredUsers);
         } else {
           setError('Erro ao buscar usuários');
@@ -36,6 +36,11 @@ const Friends = () => {
 
   const handleAddFriend = async (friendId) => {
     const loggedInUser = JSON.parse(sessionStorage.getItem('user'));
+    if (loggedInUser.friends.includes(friendId)) {
+      alert('Este usuário já está na sua lista de amigos.');
+      return;
+    }
+
     try {
       const response = await axios.post(`${config.LocalApi}/users/addFriend`, {
         friendId: friendId
@@ -47,6 +52,11 @@ const Friends = () => {
       });
       if (response.status === 200) {
         alert('Usuário adicionado à lista de amigos com sucesso!');
+        // Atualizar a lista de amigos no sessionStorage
+        loggedInUser.friends.push(friendId);
+        sessionStorage.setItem('user', JSON.stringify(loggedInUser));
+        // Remover o usuário da lista exibida
+        setUsers(users.filter(user => user.id !== friendId));
       } else {
         alert('Erro ao adicionar usuário à lista de amigos.');
       }
@@ -65,6 +75,7 @@ const Friends = () => {
 
   return (
     <div style={{ display: 'flex' }}>
+      <div className="initial-top"></div>
       <Sidebar activeTab="/friends" />
       <div className="container">
         <Header />
