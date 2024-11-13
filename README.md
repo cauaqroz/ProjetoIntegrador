@@ -2,6 +2,10 @@
 
 Este repositório contém o código fonte da nossa plataforma de freelancers, onde os profissionais podem encontrar e se candidatar a projetos desafiadores. Nossa plataforma visa conectar talentos com oportunidades, facilitando a colaboração entre freelancers e empresas.
 
+
+>[Clique Aqui, para acessar a versão web do projet](https://frontend-conecta-f069212eea10.herokuapp.com/)
+ 
+ 
 ## Funcionalidades Principais:
 - Perfil do Freelancer: Crie um perfil detalhado, destacando suas habilidades, experiências e portfólio.
 - Busca de Projetos: Explore uma variedade de projetos, filtrados por tecnologia, área de atuação e outras características.
@@ -16,6 +20,6 @@ Este repositório contém o código fonte da nossa plataforma de freelancers, on
 - Banco de dados: [MongoDB]
 - Outras: [Metodo APIFIRST, SwaggerEditor, SOLID]
 
-## Documentação Backend
+
 
 
