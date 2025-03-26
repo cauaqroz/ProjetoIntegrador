@@ -3,7 +3,7 @@
 Este repositório contém o código fonte da nossa plataforma de freelancers, onde os profissionais podem encontrar e se candidatar a projetos desafiadores. Nossa plataforma visa conectar talentos com oportunidades, facilitando a colaboração entre freelancers e empresas.
 
 
->[Clique Aqui, para acessar a versão web do projet](https://frontend-conecta-f069212eea10.herokuapp.com/)
+>[Clique Aqui, para acessar a versão web do projeto](https://frontend-conecta-f069212eea10.herokuapp.com/)
  
  
 ## Funcionalidades Principais:
